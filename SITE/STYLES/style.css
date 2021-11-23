@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(0, 0, 0);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* cabecalho da pagina*/
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.1)), url(../ASSETS/turntable2.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-bottom: solid 5px rgb(255, 239, 218);
+}
+
+nav {
+    display: flex;
+    padding: 3.5% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+}
+
+nav h1 {
+    font-size: 55px;
+    background-color: transparent;
+}
+
+nav a {
+    background: transparent;
+    text-decoration: none;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+    background-color: transparent;
+}
+
+.nav-links ul {
+    background: transparent;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+    background-color: transparent;
+}
+
+.nav-links ul li a {
+    color: rgb(255, 239, 218);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #ff6347;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+/*call to action ao entrar na paginas*/
+.text-box {
+    width: 90%;
+    color: rgb(255, 239, 218);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.664);
+}
+
+.text-box h1 {
+    font-size: 62px;
+    background: transparent;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 15px;
+    background: transparent;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(255, 239, 218);
+    border: 1px solid rgb(255, 239, 218);
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border: 1px solid #ff6347;
+    background: #ff6347;
+    transition: 1s;
+}
+
+/*seção informativa dos discos da pagina*/
+
+.conteudo-genero {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    color: rgba(255, 255, 255, 0.856);
+}
+
+.conteudo-genero h1 {
+    font-size: 36px;
+}
+
+.conteudo-genero p {
+    padding: 10px;
+}
+
+.box {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.col-disco {
+    flex-basis: 32%;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.col-disco img {
+    width: 100%;
+    display: block;
+}
+
+.layer-verde {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer-verde:hover {
+    background-color: rgba(11, 211, 27, 0.7);
+}
+
+.layer-verde h3 {
+    width: 100%;
+    font-weight: 500;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+    background: transparent;
+}
+
+.layer-verde:hover h3 {
+    bottom: 49%;
+    opacity: 1;
+}
+
+.layer-amarelo {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer-amarelo:hover {
+    background-color: rgba(255, 251, 13, 0.7);
+}
+
+.layer-amarelo h3 {
+    width: 100%;
+    font-weight: 500;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+    background: transparent;
+}
+
+.layer-amarelo:hover h3 {
+    bottom: 49%;
+    opacity: 1;
+}
+
+.layer-vermelho {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer-vermelho:hover {
+    background-color: rgba(211, 18, 11, 0.7);
+}
+
+.layer-vermelho h3 {
+    width: 100%;
+    font-weight: 500;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+    background: transparent;
+}
+
+.layer-vermelho:hover h3 {
+    bottom: 49%;
+    opacity: 1;
+}
+
+/* seção de planos da pagina*/
+
+.planos {
+    background-position: center;
+    background-size: cover;
+    width: 65%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+    color: rgb(255, 239, 218);
+}
+
+.planos h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.planos p {
+    color: rgba(255, 255, 255, 0.856);
+    font-size: 14px;
+    font-weight: 300px;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.col-gratis {
+    flex-basis: 31%;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.col-gratis:hover {
+    box-shadow: 0 0 50px 0 #ff6347;
+}
+
+.col-gratis h3 {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.col-gratis p {
+    color: black;
+    background-color: whitesmoke;
+}
+
+.col-pago {
+    flex-basis: 31%;
+    background-color: #ff6347;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.col-pago h3 {
+    color: whitesmoke;
+    background-color: #ff6347;
+}
+
+.col-pago p {
+    color: whitesmoke;
+    background-color: #ff6347;
+
+}
+
+.col-pago:hover {
+    box-shadow: 0 0 50px 0 rgba(255, 0, 0, 0.856);
+}
+
+/* AQUI COMEÇA A PAGINA DE FAQ*/
+
+.biografia {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 90px;
+    color: rgb(255, 239, 218);
+    border-top: solid 5px rgb(255, 239, 218);
+
+}
+
+.col-biografia {
+    flex-basis: 31%;
+    background-color: #0f5bff;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.col-biografia p {
+    background: transparent;
+}
+
+.col-biografia:hover {
+    box-shadow: 0 0 50px 0 #0f5bff;
+}
+
+.col-foto {
+    flex-basis: 31%;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    margin-right: 5%;
+    background-color: rgb(255, 239, 218);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.col-foto img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* AQUI COMEÇA A PAGINA DE FAQ*/
+.faq {
+    background-position: center;
+    background-size: cover;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 90px;
+    color: rgb(255, 239, 218);
+    border-top: solid 5px rgb(255, 239, 218);
+}
+
+.faq .resposta {
+    background: transparent;
+    color: black;
+}
+
+.faq-item {
+    background-color: whitesmoke;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: .2rem 2px .2rem #0f5bff;
+}
+
+.faq_link {
+    font-size: 20px;
+    text-decoration: none;
+    background: transparent;
+    color: black;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+}
+
+.faq_link i {
+    color: brown;
+    background: transparent;
+    padding: .5rem;
+}
+
+.faq_link .ion-md-remove {
+    display: none;
+}
+
+.resposta {
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 650ms;
+}
+
+.resposta::before {
+    content: "";
+    position: absolute;
+    width: .6rem;
+    height: 99%;
+    top: 50%;
+    left: 0;
+    background-color: #ff6347;
+    transform: translateY(-50%);
+}
+
+.resposta p {
+    font-size: 16px;
+    margin-left: -10px;
+    padding: 32px;
+    background: transparent;
+    background-color: rgb(250, 209, 156);
+    border-radius: 10px;
+}
+
+.faq-item:target .resposta {
+    max-height: 20rem;
+}
+
+.faq-item:target .faq_link .ion-md-add {
+    display: none;
+}
+
+.faq-item:target .faq_link .ion-md-remove {
+    display: block;
+}
