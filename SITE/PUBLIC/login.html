@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style-login.css">
+    <script src="./js/funcoes.js"></script>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <h1><a href="./index.html">LOVINYL</a></h1>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="">CONTATO</a></li>
+                    <li><a href="./cadastro-login.html">CADASTRO</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>  
+
+    <section class="login">
+        <div class="box-login">
+            <div class="titulo">
+                <h1>ENTRE</h1>
+            </div>
+
+            <div class="grupo-ipt" id="grupo_login">
+                <input type="text"id="ipt_email_user" class="campo-input" placeholder="Digite seu email" required>
+                <input type="text"id="ipt_senha" class="campo-input" placeholder="Digite sua Senha" required>
+                <input type="checkbox" id="" class="check-box"><span>Lembrar Senha</span>
+                <p>Ainda não tem um cadastro?<a href="./cadastro-login.html"> Registre-se</a></p>
+                <button onclick="bt_login()" class="bt-enviar" id="bt_login">Entrar</button>
+            </div>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif">
+            </div>
+    
+            <div id="div_erros_login">
+    
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    function bt_login() {
+        aguardar();
+
+        var emailVar = ipt_email_user.value;
+        var senhaVar = ipt_senha.value;
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
