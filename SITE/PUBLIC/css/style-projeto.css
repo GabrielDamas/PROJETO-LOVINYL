@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.1)), url(../assets/turntable2.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* cabecalho da pagina*/
+.header {
+    min-height: 5vh;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    padding: 3.5% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+}
+
+nav h1 {
+    font-size: 55px;
+    background-color: transparent;
+}
+
+nav a {
+    background: transparent;
+    text-decoration: none;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+    background-color: transparent;
+}
+
+.nav-links ul {
+    background: transparent;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+    background-color: transparent;
+}
+
+.nav-links ul li a {
+    color: rgb(255, 239, 218);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #ff6347;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+/* CONTEUDO DO PROJETO*/
+
+.conteudo{
+    width: 100%;
+    min-height: 80vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.conteudo-projeto{
+    background-color: rgb(255, 239, 218);
+    width: 40%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.conteudo-projeto h1{       
+    height: 80px;
+    width: 100%;
+}
+
+.conteudo-projeto p{
+    width: 85%;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 17px;
+}

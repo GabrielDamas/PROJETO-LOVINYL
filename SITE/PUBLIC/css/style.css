@@ -384,6 +384,7 @@ nav a {
     padding-top: 90px;
     color: rgb(255, 239, 218);
     border-top: solid 5px rgb(255, 239, 218);
+    margin-bottom: 140px;
 }
 
 .faq .resposta {
@@ -459,3 +460,74 @@ nav a {
 .faq-item:target .faq_link .ion-md-remove {
     display: block;
 }
+
+
+/* footer da pagina*/
+.footer{
+    width: 100%;
+    height: 300px;
+    background-color: rgb(255, 239, 218);
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.footer h1{
+    color: black;
+    background: transparent;
+    text-align: center;
+    margin-top: 50px;
+    border-bottom: 2px solid tomato;
+}
+
+.footer p{
+    background: transparent;
+}
+
+.conteudo-footer{
+    width: 80%;
+    margin: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    background: transparent;
+}
+
+.ou{
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.tel {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid tomato;
+}
+
+.tel a{
+    text-decoration: none;
+    background: transparent;
+    color: rgba(11, 211, 27);
+}
+
+.redes-sociais {
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.email {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid tomato;
+}
+
+.email a{
+    text-decoration: none;
+    background: transparent;
+    color: rgb(0, 49, 155);
+}
+

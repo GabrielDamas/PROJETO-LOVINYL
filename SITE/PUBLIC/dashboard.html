@@ -6,34 +6,161 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../public/css/style-dashboard.css">
+    <link rel="stylesheet" href="./css/style-dashboard.css">
+    
+    <script src="./js/funcoes.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <body onload="validarSessao(), atualizarFeed()"></body>
+    <input type="checkbox" id="nav-toggle">
     <section class="sidebar">
         <div class="sidebar-logo">
-            <h1>LOVINYL</h1>
+            <h1><span>LOVINYL</span></h1>
         </div>
 
         <div class="sidebar-menu">
             <ul>
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Biblioteca</a></li>
-                <li><a href="">Ultimas Atualizações</a></li>
-                <li><a href="">Sugestões</a></li>
+                <li><a href="" class="ativo">INICIO</a></li>
+                <li><a href="">SUA BIBLIOTECA</a></li>
+                <li><a href="">ULTIMOS DISCOS</a></li>
+                <li><a href="">SUGESTÕES</a></li>
             </ul>
         </div>
     </section>
 
     <section class="conteudo">
-        <h2>
-            <label for="">
-                <img src="./assets/sidebar-icon.jpg" alt="">
-            </label>
-            DASHBOARD
-        </h2>
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <img src="./assets/sidebar-icon.jpg" alt="">
+                </label>
+                DASHBOARD
+            </h2>
 
+            <div class="search-box">
+                <input type="search" placeholder="Procure um disco">
+            </div>
+
+            <div class="user-box">
+                <h4 id="nome_user_box">Algum Nome</h4>
+                <ul>
+                    <li><a onclick="limparSessao()">Log Out</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <h1>VEJA ABAIXO SUAS MUSICAS MAIS OUVIDAS!</h1>
+            <div class="botoes">
+                <button onclick="bt_dia()" class="bt-grafico">DIA</button>
+                <button onclick="bt_mes()" class="bt-grafico">MES</button>
+                <button onclick="bt_ano()" class="bt-grafico">ANO</button>
+            </div>
+
+            <div class="grafico">
+                <div class="conteudo-grafico">
+                    <canvas id="MyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="fav-msc-box">
+                <div class="musicas-favoritas">
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="music-container" id="music-container">
+                <div class="music-info">
+                  <h4 id="title"></h4>
+                  <div class="progress-container" id="progress-container">
+                    <div class="progress" id="progress"></div>
+                  </div>
+                </div>
+          
+                <audio src="music/ukulele.mp3" id="audio"></audio>
+          
+                <div class="img-container">
+                  <img src="images/ukulele.jpg" alt="music-cover" id="cover" />
+                </div>
+                <div class="navigation">
+                  <button id="prev" class="action-btn">
+                    <i class="fas fa-backward"></i>
+                  </button>
+                  <button id="play" class="action-btn action-btn-big">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <button id="next" class="action-btn">
+                    <i class="fas fa-forward"></i>
+                  </button>
+                </div>
+              </div>
+          
+              <script src="./js/script.js"></script>
+            </body>
+          </html>
+        </footer>
     </section>
 </body>
 
 </html>
+
+<script>
+    // criando um novo objeto, contendo o tipo, os dados
+// e as opções que o gráfico terá.
+let ctx = document.getElementById('myChart');
+let myBarChart = new Chart(ctx, {
+    type: 'bar',
+   // O objeto data possui os valores dispostos no gráfico
+data: {
+    // Legendas das Barras
+    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    datasets: [{
+        // Legenda geral
+        label: '$ em Vendas',
+        // Dados a serem inseridos nas barras
+        data: [10, 9, 12, 19, 21, 7],
+        // Define as cores de preenchimento das barras
+        // de acordo com sua posição no vetor
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        // Define as cores de preenchimento das bordas das barras
+        // de acordo com sua posição no vetor
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+         ],
+         // Define a espessura da borda dos retângulos
+         borderWidth: 1
+    }]
+}, 
+
+options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+}
+});
+
+
+</script>
