@@ -41,7 +41,7 @@
                 <input type="text"id="ipt_email" class="campo-input"placeholder="Digite seu Email" required>
                 <input type="password"id="ipt_senha" class="campo-input" placeholder="Digite sua Senha" required>
                 <input type="password"id="ipt_conf_senha" class="campo-input" placeholder="Confirme sua senha" required>
-                <button onclick="bt_cadastro()" class="bt-enviar" id="bt_cadastro">Cadastrar-se</button>
+                <button onclick="cadastrar()" class="bt-enviar" id="bt_cadastro">Cadastrar-se</button>
             </div>
 
             <div id="div_aguardar" class="loading-div">
@@ -57,7 +57,7 @@
 </html>
 
 <script>
-    function bt_cadastro() {
+    function cadastrar() {
         aguardar();
 
         var nomeVar = ipt_nome_user.value;

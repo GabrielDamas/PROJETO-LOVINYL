@@ -7,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="./css/style-dashboard.css">
-    
+
+    <script src="./js/login.js"></script>
     <script src="./js/funcoes.js"></script>
-    
+    <script src="./pagina-disco1.html"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 </head>
 
-<body>
-    <body onload="validarSessao(), atualizarFeed()"></body>
-    <input type="checkbox" id="nav-toggle">
+<body onload="validarSessao()">
     <section class="sidebar">
         <div class="sidebar-logo">
             <h1><span>LOVINYL</span></h1>
@@ -25,10 +27,9 @@
 
         <div class="sidebar-menu">
             <ul>
-                <li><a href="" class="ativo">INICIO</a></li>
-                <li><a href="">SUA BIBLIOTECA</a></li>
-                <li><a href="">ULTIMOS DISCOS</a></li>
-                <li><a href="">SUGESTÕES</a></li>
+                <li><a href="./dashboard.html" class="ativo">INICIO</a></li>
+                <li><a href="./biblioteca.html">NOSSOS DISCOS</a></li>
+                <li><a href="./formulario.html">SUGESTÕES</a></li>
             </ul>
         </div>
     </section>
@@ -36,9 +37,6 @@
     <section class="conteudo">
         <header>
             <h2>
-                <label for="nav-toggle">
-                    <img src="./assets/sidebar-icon.jpg" alt="">
-                </label>
                 DASHBOARD
             </h2>
 
@@ -47,7 +45,7 @@
             </div>
 
             <div class="user-box">
-                <h4 id="nome_user_box">Algum Nome</h4>
+                <h3>Olá,<b id="b_usuario"></b></h3>
                 <ul>
                     <li><a onclick="limparSessao()">Log Out</a></li>
                 </ul>
@@ -57,110 +55,147 @@
         <main>
             <h1>VEJA ABAIXO SUAS MUSICAS MAIS OUVIDAS!</h1>
             <div class="botoes">
-                <button onclick="bt_dia()" class="bt-grafico">DIA</button>
-                <button onclick="bt_mes()" class="bt-grafico">MES</button>
-                <button onclick="bt_ano()" class="bt-grafico">ANO</button>
+                <button onclick="bt_dado(1)" class="bt-grafico">DIA</button>
+                <button onclick="bt_dado(2)" class="bt-grafico">MES</button>
+                <button onclick="bt_dado(3)" class="bt-grafico">ANO</button>
             </div>
 
             <div class="grafico">
                 <div class="conteudo-grafico">
-                    <canvas id="MyChart"></canvas>
+                    <canvas id="MyChart" width="400" height="400"></canvas>
                 </div>
             </div>
 
-            <div class="fav-msc-box">
-                <div class="musicas-favoritas">
 
+            <div id="div_modal" class="div-modal">
+                <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+                </div>
+                <div id="modal_container" class="modal-container">
+                    <button onclick="fecharModal()">fechar modal</button>
                 </div>
             </div>
         </main>
-
-        <footer>
-            <div class="music-container" id="music-container">
-                <div class="music-info">
-                  <h4 id="title"></h4>
-                  <div class="progress-container" id="progress-container">
-                    <div class="progress" id="progress"></div>
-                  </div>
-                </div>
-          
-                <audio src="music/ukulele.mp3" id="audio"></audio>
-          
-                <div class="img-container">
-                  <img src="images/ukulele.jpg" alt="music-cover" id="cover" />
-                </div>
-                <div class="navigation">
-                  <button id="prev" class="action-btn">
-                    <i class="fas fa-backward"></i>
-                  </button>
-                  <button id="play" class="action-btn action-btn-big">
-                    <i class="fas fa-play"></i>
-                  </button>
-                  <button id="next" class="action-btn">
-                    <i class="fas fa-forward"></i>
-                  </button>
-                </div>
-              </div>
-          
-              <script src="./js/script.js"></script>
-            </body>
-          </html>
-        </footer>
     </section>
 </body>
 
 </html>
 
 <script>
-    // criando um novo objeto, contendo o tipo, os dados
-// e as opções que o gráfico terá.
-let ctx = document.getElementById('myChart');
-let myBarChart = new Chart(ctx, {
-    type: 'bar',
-   // O objeto data possui os valores dispostos no gráfico
-data: {
-    // Legendas das Barras
-    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-    datasets: [{
-        // Legenda geral
-        label: '$ em Vendas',
-        // Dados a serem inseridos nas barras
-        data: [10, 9, 12, 19, 21, 7],
-        // Define as cores de preenchimento das barras
-        // de acordo com sua posição no vetor
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ],
-        // Define as cores de preenchimento das bordas das barras
-        // de acordo com sua posição no vetor
-        borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-         ],
-         // Define a espessura da borda dos retângulos
-         borderWidth: 1
-    }]
-}, 
+    let proximaAtualizacao;
 
-options: {
-    scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
+    window.onload = bt_dado(1);
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    // só altere aqui se souber o que está fazendo!
+    function plotarGrafico(resposta, idContagem) {
+        console.log('iniciando plotagem do gráfico...');
+
+        var dados = {
+            labels: [],
+            datasets: [{
+                yAxisID: 'y-temperatura',
+                label: 'Temperatura',
+                borderColor: '#FFF',
+                backgroundColor: '#32b9cd8f',
+                fill: true,
+                data: []
+            }]
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.labels.push(registro.momento_grafico);
+            dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[1].data.push(registro.temperatura);
+        }
+
+        console.log(JSON.stringify(dados));
+
+        var ctx = canvas_grafico.getContext('2d');
+        window.grafico_linha = Chart.Line(ctx, {
+            data: dados,
+            //Configurações do gráfico
+            options: {
+                responsive: true,
+                animation: {
+                    duration: 500
+                },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Histórico recente de umidade/temperatura'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: false,
+                        position: 'right',
+                        id: 'y-umidade',
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            min: 0
+                        },
+
+                        gridLines: {
+                            drawOnChartArea: false,
+                        },
+                    }],
+                }
             }
-        }]
+        });
+
+        function sendData() {
+            var http = new XMLHttpRequest();
+            http.open('POST', 'http://localhost:3000/api/sendData', false);
+            http.send(null);
+        }
     }
-}
-});
+
+    // criando um novo objeto, contendo o tipo, os dados
+    // e as opções que o gráfico terá.
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'bar',
+        // O objeto data possui os valores dispostos no gráfico
+        type: 'bar',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 
 
 </script>

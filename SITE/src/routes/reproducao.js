@@ -3,8 +3,8 @@ var router = express.Router();
 
 var reproducaoController = require("../controllers/reproducaoController");
 
-router.get("/musica/:ID_MUSICA", function (req, res) {
-    reproducaoController.obterMusicas(req, res);
+router.post("/obterContagem", function (req, res) {
+    reproducaoController.obterContagem(req, res);
 });
 
 module.exports = router;

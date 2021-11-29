@@ -20,6 +20,12 @@ html {
     border-bottom: solid 5px rgb(255, 239, 218);
 }
 
+.header img{
+    width: 170px;
+    background: transparent;
+    position: relative;
+    bottom: 30px;
+}
 nav {
     display: flex;
     padding: 3.5% 6%;
@@ -342,16 +348,24 @@ nav a {
 .col-biografia {
     flex-basis: 31%;
     background-color: #0f5bff;
-    border-radius: 10px;
     margin-bottom: 5%;
-    margin-left: 5%;
+    margin-left: 18%;
+    margin-top: 5px;
     padding: 20px 12px;
     box-sizing: border-box;
     transition: 0.5s;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    z-index: 0;
 }
 
 .col-biografia p {
+    width: 85%;
     background: transparent;
+    margin-top: 10px;
+    font-size: 15.5px;
 }
 
 .col-biografia:hover {
@@ -362,7 +376,7 @@ nav a {
     flex-basis: 31%;
     margin-bottom: 5%;
     padding: 20px 12px;
-    margin-right: 5%;
+    margin-right: 18%;
     background-color: rgb(255, 239, 218);
     border-radius: 10px;
     transition: 0.5s;

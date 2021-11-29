@@ -79,28 +79,31 @@ nav a {
 /* CONTEUDO DO PROJETO*/
 
 .conteudo{
-    width: 100%;
-    min-height: 80vh;
-    background-position: center;
-    background-size: cover;
-    position: relative;
+    width: 32%;
+    height: 450px;
+    background-color: antiquewhite;
+    position: fixed;
+    top: 225px;
+    left: 230px;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
 }
 
 .conteudo-projeto{
-    background-color: rgb(255, 239, 218);
-    width: 40%;
-    border-radius: 30px;
-    text-align: center;
+    width: 90%;
+    height: 90%;
 }
 
-.conteudo-projeto h1{       
-    height: 80px;
-    width: 100%;
+.conteudo-projeto h1{
+    text-align: center;
+    margin-top: 30px;
 }
 
 .conteudo-projeto p{
-    width: 85%;
-    margin: 0 auto;
-    font-weight: bold;
-    font-size: 17px;
+    text-align: justify;
+    margin-top: 20px;
+    font-size: 15.5px;
 }
+
+

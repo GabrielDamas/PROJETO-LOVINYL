@@ -31,9 +31,8 @@
             <div class="grupo-ipt" id="grupo_login">
                 <input type="text"id="ipt_email_user" class="campo-input" placeholder="Digite seu email" required>
                 <input type="text"id="ipt_senha" class="campo-input" placeholder="Digite sua Senha" required>
-                <input type="checkbox" id="" class="check-box"><span>Lembrar Senha</span>
                 <p>Ainda não tem um cadastro?<a href="./cadastro-login.html"> Registre-se</a></p>
-                <button onclick="bt_login()" class="bt-enviar" id="bt_login">Entrar</button>
+                <button onclick="entrar()" class="bt-enviar" id="bt_login">Entrar</button>
             </div>
 
             <div id="div_aguardar" class="loading-div">
@@ -49,7 +48,7 @@
 </html>
 
 <script>
-    function bt_login() {
+    function entrar() {
         aguardar();
 
         var emailVar = ipt_email_user.value;
@@ -90,12 +89,12 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.EMAIL_USUARIO = json.EMAIL_USER;
+                    sessionStorage.NOME_USUARIO = json.NOME_USER;
+                    sessionStorage.ID_USUARIO = json.ID_CADASTRO;
 
                     setTimeout(function () {
-                        window.location = "/dashboard.html";
+                        window.location = "./dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
