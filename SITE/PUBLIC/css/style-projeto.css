@@ -20,6 +20,13 @@ html {
     width: 100%;
 }
 
+.header img{
+    width: 170px;
+    background: transparent;
+    position: relative;
+    bottom: 30px;
+}
+
 nav {
     display: flex;
     padding: 3.5% 6%;

@@ -159,18 +159,23 @@ main {
     display: flex;
     justify-content: center;
 }
-.dash-right .avisos .container {
+.dash-right .avisos {
+    width: 100%;
+    /* border: 3px solid pink; */
+  }
+  
+  .dash-right .avisos .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh;
-}
+  }
 
+  .dash-right .avisos .container h1 {
+    margin-top: 110px;
+  }
   
-.dash-right .avisos .container .div-form {
-    width: 80%;
-    margin-top: 50px;
-
+  .dash-right .avisos .container .div-form {
+    width: 100%;
   }
   
   .dash-right .avisos .container .div-form #form_postagem {
@@ -182,20 +187,23 @@ main {
   }
   
   .dash-right .avisos .div-form input {
-    width: 100%;
+    width: 80%;
+    height: 40px;
     border-radius: 5px;
+    color: black;
+    text-align: center;
   }
   
   .dash-right .avisos .div-form textarea {
-    width: 100%;
+    width: 80%;
     /* color: #E6005A; */
-    border: 3px solid #e6005a;
+    border: 3px solid antiquewhite;
     background-color: white;
     border-radius: 5px;
+    color: black;
   }
-
   
-.dash-right .avisos .div-form button {
+  .dash-right .avisos .div-form button {
     cursor: pointer;
     border: 0;
     border-radius: 5px;
@@ -205,6 +213,54 @@ main {
     color: rgb(0, 0, 0);
     background-color: antiquewhite;
     width: 120px;
+    margin-top: 20px;
+  }
+  
+  .publicacao-btn-editar {
+    cursor: pointer;
+    font-family: "Exo 2", sans-serif;
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 8px;
+    color: rgb(0, 0, 0);
+    background-color: antiquewhite;
+    width: 80px;
+  }
+  
+  .publicacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    border-bottom: 3px solid antiquewhite;
+    padding: 20px;
+  }
+  
+  .publicacao > *:not(:last-child) {
+    padding: 0 0 10px 0;
+  }
+  
+  .div-results {
+    width: 100%;
+  }
+  
+  .div-results .feed-container {
+    background-color: #212124;
+    border-radius: 5px;
+    margin-bottom: 80px;
+  }
+  
+  .div-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .div-buttons > * {
+    margin-left: 30px;
   }
   
   

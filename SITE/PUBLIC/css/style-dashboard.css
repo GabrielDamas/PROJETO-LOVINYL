@@ -23,6 +23,13 @@ html {
     z-index: 1;
 }
 
+.sidebar img{
+    width: 170px;
+    background: transparent;
+    position: relative;
+    bottom: 30px;
+}
+
 .sidebar-logo {
     padding: 16px 0px 16px 32px;
 }
@@ -201,4 +208,6 @@ main {
     border: 2px solid white;
     box-shadow: 0 0 20px 0 white;
     background-color: white;
-}
+    position: relative;
+    left: 100px;
+ }

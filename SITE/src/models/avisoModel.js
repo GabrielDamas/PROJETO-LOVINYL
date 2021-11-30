@@ -8,13 +8,13 @@ function listar() {
             a.TITULO,
             a.DESCRICAO,
             a.FK_USER,
-            u.ID_USER AS idUsuario,
+            u.ID_CADASTRO AS idUsuario,
             u.NOME_USER,
             u.EMAIL_USER,
-            u.SENHA
+            u.SENHA_USER
         FROM TAB_AVISO a
             INNER JOIN TAB_USER u
-                ON a.FK_USER = u.ID_USER;
+                ON a.FK_USER = u.ID_CADASTRO;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -28,13 +28,13 @@ function pesquisarDescricao(texto) {
         a.TITULO,
         a.DESCRICAO,
         a.FK_USER,
-        u.ID_USER AS idUsuario,
+        u.ID_CADASTRO AS idUsuario,
         u.NOME_USER,
         u.EMAIL_USER,
-        u.SENHA
+        u.SENHA_USER
     FROM TAB_AVISO a
         INNER JOIN TAB_USER u
-            ON a.FK_USER = u.ID_USER
+            ON a.FK_USER = u.ID_CADASTRO
         WHERE a.DESCRICAO LIKE '${texto}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -49,14 +49,14 @@ function listarPorUsuario(idUsuario) {
         a.TITULO,
         a.DESCRICAO,
         a.FK_USER,
-        u.ID_USER AS idUsuario,
+        u.ID_CADASTRO AS idUsuario,
         u.NOME_USER,
         u.EMAIL_USER,
-        u.SENHA
+        u.SENHA_USER
     FROM TAB_AVISO a
         INNER JOIN TAB_USER u
-            ON a.FK_USER = u.ID_USER
-        WHERE u.ID_USER = ${idUsuario};
+            ON a.FK_USER = u.ID_CADASTRO
+        WHERE u.ID_CADASTRO = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 </head>
 
-<body>
+<body onload="criarVariavel(1)">
     <section class="sidebar">
         <div class="sidebar-logo">
             <h1><span>LOVINYL</span></h1>
@@ -56,7 +57,7 @@
                     <img src="./assets/capa1.jpg">
                 </div>
                 <div class="capa-conteudo">
-                    <button id="play1" class="action-btn action-btn-big" onclick="bt_contagemMusica(1)">
+                    <button id="play1" class="action-btn action-btn-big">
                         <i class="fas fa-play"></i> Ouvir Disco
                     </button>
                     <ul>
@@ -104,32 +105,79 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function obterContagem() {
+            var user = sessionStorage.ID_USUARIO
 
-b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+            console.log('Enviando... ' + user)
+            console.log('Enviando... ' + 1)
 
-    contagemVar = 0
+            fetch("/reproducao/obterContagem", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userServer: user,
+                    discoServer: 100,
+                    contagemServer: 1,
 
-    function bt_contagemMusica(idContagem) {
-        contagemVar++;
+                })
+            }).then(function (resposta) {
 
-        fetch("/reproducao/obterContagem", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                contagemServer: contagemVar,
-            })
-        })
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    //finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                //finalizarAguardar();
+            });
+
+            return false;
+        }
+    function criarVariavel() {
+        contarDiscos()
+        obterContagem();
     }
+
+
+    function contarDiscos() {
+        var user = sessionStorage.ID_USUARIO
+
+fetch(`/reproducao/contarDiscos/${user}`, { cache: 'no-store' }).then(function (response) {
+    
+    if (response.ok) {
+        
+        response.json().then(function (resposta) {
+            
+            //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            localStorage.setItem('quantidadeDiscos',resposta[0].quantidade)
+            
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
 </script>
 
 
 /*
 
-    Ao clicar no album para ouvir, gravar no banco de dados o número atual de quantas vezes a música foi ouvida:
+Ao clicar no album para ouvir, gravar no banco de dados o número atual de quantas vezes a música foi ouvida:
 
-        Ao carregar a página, pega o id do álbum, faz um select para ver a quantidade de "ouvidas" daquele album, e guarda essa informação. 
-        Ao clicar no album, pega o seu id, e atualiza a informação no banco, passando o valor atual de "ouvidas" + 1.
+Ao carregar a página, pega o id do álbum, faz um select para ver a quantidade de "ouvidas" daquele album, e guarda essa
+informação.
+Ao clicar no album, pega o seu id, e atualiza a informação no banco, passando o valor atual de "ouvidas" + 1.
 
 */
