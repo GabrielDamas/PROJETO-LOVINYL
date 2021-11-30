@@ -9,7 +9,8 @@ function obterContagem(user, disco, contagem) {
 
 function contarDiscos(user) {
     instrucaoSql = `SELECT COUNT(*) as quantidade, NOME_DISCO as Disco FROM TAB_HISTORICO
-    JOIN TAB_DISCO on TAB_DISCO.ID_DISCO = TAB_HISTORICO.FK_DISCO;`;
+    JOIN TAB_DISCO on TAB_DISCO.ID_DISCO = TAB_HISTORICO.FK_DISCO
+		group by FK_DISCO;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

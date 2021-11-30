@@ -170,14 +170,3 @@ fetch(`/reproducao/contarDiscos/${user}`, { cache: 'no-store' }).then(function (
 }
 
 </script>
-
-
-/*
-
-Ao clicar no album para ouvir, gravar no banco de dados o número atual de quantas vezes a música foi ouvida:
-
-Ao carregar a página, pega o id do álbum, faz um select para ver a quantidade de "ouvidas" daquele album, e guarda essa
-informação.
-Ao clicar no album, pega o seu id, e atualiza a informação no banco, passando o valor atual de "ouvidas" + 1.
-
-*/

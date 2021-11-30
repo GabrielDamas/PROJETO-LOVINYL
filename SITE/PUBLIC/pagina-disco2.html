@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/conteudo-musica.css">
+    <script src="./js/funcoes.js"></script>
+
+    <script src="./dashboard.html"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+</head>
+
+<body onload="criarVariavel(2)">
+    <section class="sidebar">
+        <div class="sidebar-logo">
+            <h1><span>LOVINYL</span></h1>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li><a href="./dashboard.html">INICIO</a></li>
+                <li><a href="./biblioteca.html" class="ativo">NOSSOS DISCOS</a></li>
+                <li><a href="./formulario.html">SUGESTÕES</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="conteudo">
+        <header>
+            <h2>
+                NOSSA BIBLIOTECA
+            </h2>
+
+            <div class="search-box">
+                <input type="search" placeholder="Procure um disco">
+            </div>
+
+            <div class="user-box">
+                <h3>Olá,<b id="b_usuario"></b></h3>
+                <ul>
+                    <li><a onclick="limparSessao()">Log Out</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <h2>MICHAEL JACKSON - BAD</h2>
+            <div class="capa-container">
+                <div>
+                    <img src="./assets/capa2.jpg">
+                </div>
+                <div class="capa-conteudo">
+                    <button id="play1" class="action-btn action-btn-big">
+                        <i class="fas fa-play"></i> Ouvir Disco
+                    </button>
+                    <ul>
+                        <li>Michael Jackson - Badk</li>
+                        <li>Michael Jackson - Speed Demon</li>
+                        <li>Michael Jackson - The Way You Make Me Feel</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="music-container" id="music-container">
+                <div class="music-info">
+                    <h4 id="title"></h4>
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                </div>
+
+                <audio src="music/ukulele.mp3" id="audio"></audio>
+
+                <div class="img-container">
+                    <img src="images/vinilogo.png" alt="music-cover" id="cover">
+                </div>
+
+                <div class="navigation">
+                    <button id="prev" class="action-btn">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button id="play" class="action-btn action-btn-big">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="next" class="action-btn">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+            </div>
+
+            <script src="./js/script2.js"></script>
+        </footer>
+    </section>
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function obterContagem() {
+            var user = sessionStorage.ID_USUARIO
+
+            console.log('Enviando... ' + user)
+            console.log('Enviando... ' + 1)
+
+            fetch("/reproducao/obterContagem", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userServer: user,
+                    discoServer: 101,
+                    contagemServer: 1,
+
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    //finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                //finalizarAguardar();
+            });
+
+            return false;
+        }
+    function criarVariavel() {
+        contarDiscos()
+        obterContagem();
+    }
+
+
+    function contarDiscos() {
+        var user = sessionStorage.ID_USUARIO
+
+fetch(`/reproducao/contarDiscos/${user}`, { cache: 'no-store' }).then(function (response) {
+    
+    if (response.ok) {
+        
+        response.json().then(function (resposta) {
+            
+            //console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            localStorage.setItem('quantidadeDiscos',resposta[0].quantidade)
+            
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+</script>

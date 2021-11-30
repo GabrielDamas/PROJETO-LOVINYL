@@ -290,6 +290,18 @@ nav a {
     padding: 20px 12px;
     box-sizing: border-box;
     transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.col-gratis ul{
+    background-color: transparent;
+}
+.col-gratis li{
+    background-color: transparent;
+    color: black;
+    list-style: none;
+    margin-top: 10px;
 }
 
 .col-gratis:hover {
@@ -327,6 +339,18 @@ nav a {
 
 }
 
+.col-pago ul{
+    background-color: transparent;
+}
+.col-pago li{
+    margin-top: 10px;
+    background-color: transparent;
+    list-style: none;
+}
+.col-pago h1{
+    margin-top: 30px;
+    background-color: transparent;
+}
 .col-pago:hover {
     box-shadow: 0 0 50px 0 rgba(255, 0, 0, 0.856);
 }
